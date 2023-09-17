@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import {ButtonAntd} from "./components/ui/button";
 
 function App() {
   return (
@@ -7,9 +7,7 @@ function App() {
         <h1 className="text-slate-600/90">Vite + React</h1>
       </div>
 
-      <Button type="primary" ghost className="px-9 ml-12" >
-        Button
-      </Button>
+      <ButtonAntd classTW="text-red-900 font-bold bg-slate-300/10" title="Home" />
     </>
   );
 }
