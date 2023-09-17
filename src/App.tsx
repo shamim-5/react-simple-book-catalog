@@ -1,4 +1,4 @@
-import {ButtonAntd} from "./components/ui/button";
+import { ButtonAntd } from "./components/ui/button";
 
 function App() {
   return (

@@ -1,0 +1,109 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "genre": "Classic",
+      "publication_date": "1925-04-10",
+      "reviews": [
+        {
+          "id": 1,
+          "user": "Alice",
+          "rating": 5,
+          "comment": "A masterpiece!"
+        },
+        {
+          "id": 2,
+          "user": "Bob",
+          "rating": 4,
+          "comment": "A great read."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "genre": "Classic",
+      "publication_date": "1960-07-11",
+      "reviews": [
+        {
+          "id": 3,
+          "user": "Carol",
+          "rating": 5,
+          "comment": "A powerful book."
+        },
+        {
+          "id": 4,
+          "user": "David",
+          "rating": 4,
+          "comment": "A must-read."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "publication_date": "1937-09-21",
+      "reviews": [
+        {
+          "id": 5,
+          "user": "Eve",
+          "rating": 5,
+          "comment": "A fantastic adventure."
+        },
+        {
+          "id": 6,
+          "user": "Frank",
+          "rating": 4,
+          "comment": "A classic fantasy novel."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "1984",
+      "author": "George Orwell",
+      "genre": "Dystopian",
+      "publication_date": "1949-06-08",
+      "reviews": [
+        {
+          "id": 7,
+          "user": "Grace",
+          "rating": 5,
+          "comment": "A thought-provoking classic."
+        },
+        {
+          "id": 8,
+          "user": "Harry",
+          "rating": 4,
+          "comment": "An important book."
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "genre": "Romance",
+      "publication_date": "1813-01-28",
+      "reviews": [
+        {
+          "id": 9,
+          "user": "Ivy",
+          "rating": 5,
+          "comment": "A timeless love story."
+        },
+        {
+          "id": 10,
+          "user": "Jack",
+          "rating": 4,
+          "comment": "Classic romance."
+        }
+      ]
+    }
+  ]
+}
