@@ -6,6 +6,8 @@
       "author": "F. Scott Fitzgerald",
       "genre": "Classic",
       "publication_date": "1925-04-10",
+      "description": "The Great Gatsby is a timeless classic by F. Scott Fitzgerald, exploring profound themes of wealth, love, and the elusive American Dream. Set against the backdrop of the roaring 1920s, the novel follows the enigmatic millionaire Jay Gatsby and his infatuation with Daisy Buchanan, a married woman. Fitzgerald's lyrical prose and vivid characters paint a vivid picture of excess, decadence, and moral decay in the Jazz Age.\n\nAs readers delve into this masterpiece, they encounter a world where opulence masks inner emptiness, where love and ambition collide, and where the pursuit of happiness often leads to tragedy. The novel's enduring relevance lies in its exploration of human desires and the consequences of our relentless pursuit of success and status.\n\nWith its memorable characters, iconic parties, and a tragic love story at its core, The Great Gatsby continues to captivate readers and remains a powerful commentary on the American Dream's fragility and allure.",
+      "image": "https://m.media-amazon.com/images/I/A1vJ-YLcUVL._SL1500_.jpg",
       "reviews": [
         {
           "id": 1,
@@ -27,6 +29,8 @@
       "author": "Harper Lee",
       "genre": "Classic",
       "publication_date": "1960-07-11",
+      "description": "To Kill a Mockingbird, penned by Harper Lee, is a literary classic that delves into issues of racial injustice and moral integrity in the American South. Set in the fictional town of Maycomb, Alabama, during the 1930s, the story is narrated by Scout Finch, a young girl who observes her father, Atticus Finch, defending a black man accused of raping a white woman.\n\nLee's novel masterfully explores themes of empathy, racial prejudice, and the loss of innocence. Through Scout's eyes, readers witness the complexities of society, as well as the courage of those who stand against injustice. To Kill a Mockingbird is a poignant reminder of the importance of compassion and the fight for justice, making it an enduring classic in American literature.",
+      "image": "https://m.media-amazon.com/images/I/81+MJor-K6L._SL1500_.jpg",
       "reviews": [
         {
           "id": 3,
@@ -48,6 +52,8 @@
       "author": "J.R.R. Tolkien",
       "genre": "Fantasy",
       "publication_date": "1937-09-21",
+      "description": "The Hobbit, written by J.R.R. Tolkien, invites readers to join Bilbo Baggins on a remarkable adventure in the classic fantasy realm of Middle-earth. Bilbo, a hobbit with a penchant for a quiet life, is thrust into a grand quest when he is recruited by the wizard Gandalf and a group of dwarves led by Thorin Oakenshield.\n\nAs Bilbo and his companions journey through treacherous lands, face mythical creatures, and confront the dragon Smaug, they uncover the hidden depths of courage and heroism within themselves. Tolkien's storytelling, rich world-building, and intricate characters have made The Hobbit a beloved classic in the fantasy genre, setting the stage for his even more epic work, The Lord of the Rings.",
+      "image": "https://m.media-amazon.com/images/I/41oMadFlZ3L._SY445_SX342_.jpg",
       "reviews": [
         {
           "id": 5,
@@ -69,6 +75,8 @@
       "author": "George Orwell",
       "genre": "Dystopian",
       "publication_date": "1949-06-08",
+      "description": "George Orwell's thought-provoking dystopian classic explores the dangers of totalitarianism and the erosion of individual freedom in a grim future. Set in the superstate of Oceania, the novel follows the life of Winston Smith, a low-ranking bureaucrat who becomes disillusioned with the oppressive regime of Big Brother.\n\nOrwell's prescient vision of surveillance, propaganda, and thought control has resonated with readers for decades, serving as a cautionary tale about the consequences of unchecked government power. As Winston rebels against the Party's control, he embarks on a journey of resistance, self-discovery, and the pursuit of truth in a world where reality is malleable and dissent is punishable by death.",
+      "image": "https://m.media-amazon.com/images/I/41+QGou959S._SY445_SX342_.jpg",
       "reviews": [
         {
           "id": 7,
@@ -90,6 +98,8 @@
       "author": "Jane Austen",
       "genre": "Romance",
       "publication_date": "1813-01-28",
+      "description": "Pride and Prejudice, a timeless classic by Jane Austen, delves into themes of love, class, and social conventions in 19th-century England. The novel follows the spirited Elizabeth Bennet as she navigates the challenges of courtship and family dynamics in a society where marriage is of utmost importance.\n\nAusten's witty and incisive prose, along with her memorable characters, make Pride and Prejudice a novel that continues to resonate with readers of all ages. Elizabeth's sparring with the enigmatic Mr. Darcy, the foibles of her family, and the intricate dance of manners and misunderstandings provide both humor and depth in this beloved romance novel.",
+      "image": "https://m.media-amazon.com/images/I/415VuxstEEL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
       "reviews": [
         {
           "id": 9,
@@ -102,6 +112,236 @@
           "user": "Jack",
           "rating": 4,
           "comment": "Classic romance."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Moby-Dick",
+      "author": "Herman Melville",
+      "genre": "Adventure",
+      "publication_date": "1851-10-18",
+      "description": "Moby-Dick, authored by Herman Melville, invites readers to embark on an epic sea voyage filled with adventure, obsession, and the relentless pursuit of a legendary white whale. The novel's narrator, Ishmael, joins the enigmatic Captain Ahab and a diverse crew aboard the whaling ship Pequod as they set sail in pursuit of Moby Dick, a monstrous and elusive leviathan that has driven Ahab to madness.\n\nMelville's novel is a rich tapestry of literary styles and philosophical themes. It explores the complexities of human nature, the power of obsession, and the vastness of the sea. Moby-Dick is a work of profound depth, offering readers both thrilling adventure and profound reflection.",
+      "image": "https://m.media-amazon.com/images/I/51+qDb5x-7L._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 11,
+          "user": "Karen",
+          "rating": 5,
+          "comment": "A whale of a tale!"
+        },
+        {
+          "id": 12,
+          "user": "Larry",
+          "rating": 4,
+          "comment": "Epic sea voyage."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "The Catcher in the Rye",
+      "author": "J.D. Salinger",
+      "genre": "Coming-of-age",
+      "publication_date": "1951-07-16",
+      "description": "The Catcher in the Rye, written by J.D. Salinger, is a timeless coming-of-age novel that follows the journey of Holden Caulfield, a disenchanted teenager who grapples with the challenges of growing up and the perceived phoniness of the adult world.\n\nSalinger's narrative voice, embodied by Holden, captures the angst, alienation, and rebellion of youth. As readers follow Holden's adventures in New York City, they encounter a character who is both vulnerable and cynical, seeking authenticity in a world he sees as superficial. The novel's exploration of adolescence, identity, and alienation has made it a lasting classic in American literature.",
+      "image": "https://m.media-amazon.com/images/I/41uZXoosjVL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 13,
+          "user": "Mary",
+          "rating": 4,
+          "comment": "Holden Caulfield's journey."
+        },
+        {
+          "id": 14,
+          "user": "Nathan",
+          "rating": 3,
+          "comment": "A teenage rebellion."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "War and Peace",
+      "author": "Leo Tolstoy",
+      "genre": "Historical Fiction",
+      "publication_date": "1869-01-20",
+      "description": "War and Peace, an epic historical novel by Leo Tolstoy, weaves a sweeping tale of love, war, and societal change in 19th-century Russia. The novel is set against the backdrop of the Napoleonic Wars and follows the lives of several aristocratic families, including the Bezukhovs, the Bolkonskys, and the Rostovs.\n\nTolstoy's narrative explores the intricacies of human relationships, the impact of historical events on individuals, and the philosophical quest for meaning in life. War and Peace is a monumental work that combines historical realism with deep philosophical introspection, making it a profound reflection on the human experience.",
+      "image": "https://m.media-amazon.com/images/I/41CNNYC4tmL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 15,
+          "user": "Olivia",
+          "rating": 5,
+          "comment": "Epic Russian saga."
+        },
+        {
+          "id": 16,
+          "user": "Paul",
+          "rating": 4,
+          "comment": "War and love intertwined."
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "genre": "Fantasy",
+      "publication_date": "1954-07-29",
+      "description": "The Lord of the Rings, a legendary fantasy trilogy by J.R.R. Tolkien, invites readers to embark on a heroic quest through the enchanting realm of Middle-earth. The epic tale unfolds as a diverse group of characters, including Frodo Baggins, Samwise Gamgee, and Aragorn, undertake the perilous journey to destroy the One Ring and thwart the dark lord Sauron's malevolent plans.\n\nTolkien's richly detailed world, filled with magical creatures, ancient lore, and epic battles, has captivated readers for generations. The Lord of the Rings is a timeless tale of bravery, friendship, and the enduring struggle between good and evil, making it a cornerstone of fantasy literature.",
+      "image": "https://m.media-amazon.com/images/I/41swLEK2hZL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 17,
+          "user": "Quentin",
+          "rating": 5,
+          "comment": "A legendary quest."
+        },
+        {
+          "id": 18,
+          "user": "Rachel",
+          "rating": 4,
+          "comment": "Middle-earth adventures."
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Brave New World",
+      "author": "Aldous Huxley",
+      "genre": "Dystopian",
+      "publication_date": "1932-06-11",
+      "description": "Brave New World, authored by Aldous Huxley, presents a chilling vision of a future society controlled by technology, conformity, and the pursuit of pleasure. In the World State, citizens are engineered from birth and conditioned to embrace a life of superficial happiness, devoid of individuality and critical thinking.\n\nHuxley's novel serves as a thought-provoking exploration of the potential consequences of a world where science and consumerism reign supreme. As readers delve into this dystopian landscape, they are confronted with questions about the price of happiness and the loss of humanity in a world driven by efficiency and artificial contentment.",
+      "image": "https://m.media-amazon.com/images/I/41SMxKyeeEL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 19,
+          "user": "Sam",
+          "rating": 4,
+          "comment": "A vision of the future."
+        },
+        {
+          "id": 20,
+          "user": "Tina",
+          "rating": 3,
+          "comment": "A world controlled by technology."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Frankenstein",
+      "author": "Mary Shelley",
+      "genre": "Gothic",
+      "publication_date": "1818-01-01",
+      "description": "Frankenstein, Mary Shelley's gothic masterpiece, delves into themes of creation and the profound consequences of playing with the forces of life. The novel tells the story of Victor Frankenstein, a young scientist who becomes obsessed with creating life from dead body parts.\n\nAs Victor succeeds in bringing his creation to life, he is horrified by the grotesque being he has unleashed, leading to a tragic chain of events. Shelley's exploration of scientific hubris, moral responsibility, and the essence of humanity has made Frankenstein a cornerstone of gothic literature and a timeless cautionary tale about the limits of human ambition.",
+      "image": "https://m.media-amazon.com/images/I/41ie-xkhclL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 21,
+          "user": "Victor",
+          "rating": 4,
+          "comment": "A tale of creation."
+        },
+        {
+          "id": 22,
+          "user": "Wendy",
+          "rating": 3,
+          "comment": "A monster's story."
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "The Odyssey",
+      "author": "Homer",
+      "genre": "Epic Poetry",
+      "publication_date": "8th Century BCE",
+      "description": "The Odyssey, an ancient epic poem attributed to Homer, invites readers to experience the legendary journey of Odysseus as he attempts to return home after the Trojan War. The narrative follows Odysseus's encounters with gods, monsters, and temptations on his arduous voyage, while his wife, Penelope, patiently awaits his return in Ithaca.\n\nHomer's storytelling, filled with mythical adventures and moral lessons, has had a profound influence on Western literature and culture. The Odyssey explores themes of heroism, cunning, and the enduring power of the human spirit. It is a testament to the enduring impact of ancient Greek mythology on the literary world.",
+      "image": "https://m.media-amazon.com/images/I/41LcPOJGXPL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 23,
+          "user": "Xander",
+          "rating": 5,
+          "comment": "A legendary journey."
+        },
+        {
+          "id": 24,
+          "user": "Yara",
+          "rating": 4,
+          "comment": "Greek mythology adventure."
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "The Road",
+      "author": "Cormac McCarthy",
+      "genre": "Post-apocalyptic",
+      "publication_date": "2006-09-26",
+      "description": "The Road, a post-apocalyptic novel by Cormac McCarthy, chronicles the harrowing journey of a father and son as they navigate a desolate and dangerous world in search of safety and survival. In a world ravaged by an unspecified catastrophe, the two nameless protagonists must contend with the threat of starvation, roving bands of cannibals, and the bleakness of their existence.\n\nMcCarthy's spare and haunting prose captures the profound love between the father and son as they face unimaginable challenges together. The Road is a dark and unflinching exploration of humanity's resilience in the face of overwhelming despair, making it a gripping and emotionally charged work of post-apocalyptic fiction.",
+      "image": "https://m.media-amazon.com/images/I/41S6iwwE-aL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 25,
+          "user": "Zane",
+          "rating": 5,
+          "comment": "A journey of survival."
+        },
+        {
+          "id": 26,
+          "user": "Alice",
+          "rating": 4,
+          "comment": "A haunting world."
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "The Alchemist",
+      "author": "Paulo Coelho",
+      "genre": "Philosophical",
+      "publication_date": "1988-01-01",
+      "description": "The Alchemist, a philosophical novel by Paulo Coelho, takes readers on a transformative journey of self-discovery and personal legend. The story follows Santiago, a shepherd boy from Spain, who embarks on a quest to find a hidden treasure in the Egyptian desert, guided by recurring dreams and a sense of destiny.\n\nCoelho's narrative is imbued with spiritual wisdom and a belief in the interconnectedness of all things. Through Santiago's adventures, readers are encouraged to pursue their dreams, listen to their hearts, and recognize the signs and omens that guide their path. The Alchemist is a deeply inspiring and thought-provoking work that reminds us of the power of intuition and the importance of chasing our dreams.",
+      "image": "https://m.media-amazon.com/images/I/41BcRpzNB8L._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 27,
+          "user": "Ben",
+          "rating": 4,
+          "comment": "Personal legend quest."
+        },
+        {
+          "id": 28,
+          "user": "Claire",
+          "rating": 3,
+          "comment": "Journey of self-discovery."
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "The Shining",
+      "author": "Stephen King",
+      "genre": "Horror",
+      "publication_date": "1977-01-28",
+      "description": "The Shining, a chilling horror novel by Stephen King, unfolds in the ominous setting of the Overlook Hotel, where supernatural forces and the hotel's dark history terrorize a family. Jack Torrance, a struggling writer and recovering alcoholic, takes a job as the winter caretaker of the isolated hotel, bringing his wife Wendy and young son Danny with him.\n\nAs the hotel becomes snowbound and cut off from the outside world, it becomes a breeding ground for malevolent spirits, and Jack's sanity unravels. Danny possesses a psychic gift known as 'the shining,' which allows him to see the hotel's disturbing past and the impending danger it poses. King's masterful storytelling and exploration of isolation and madness make The Shining a classic of the horror genre, one that continues to haunt readers to this day.",
+      "image": "https://m.media-amazon.com/images/I/41c8wGrZheL._BG0,0,0,0_FMpng_AC_SY480_SX480_.jpg",
+      "reviews": [
+        {
+          "id": 29,
+          "user": "Dylan",
+          "rating": 5,
+          "comment": "A terrifying masterpiece."
+        },
+        {
+          "id": 30,
+          "user": "Ella",
+          "rating": 4,
+          "comment": "Horror at its best."
         }
       ]
     }
