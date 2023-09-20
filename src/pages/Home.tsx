@@ -1,45 +1,49 @@
-import { useEffect, useState } from "react";
 import BestBooks from "../components/BestBooks";
 import { IBooks } from "@/types/globalTypes";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { Button } from "antd";
-import { increment } from "@/redux/features/books/booksSlice";
+import { useGetBooksQuery } from "@/redux/features/books/booksApi";
+import Error from "@/components/ui/Error";
 
 const Home = () => {
-  const [books, setBooks] = useState<IBooks[]>([]);
+  const { data: books, isLoading, isError, error } = useGetBooksQuery(undefined);
 
-  // TODO: redux-toolkit bookSlice check 
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
+  // decide what to render
+  let content = null;
 
-  useEffect(() => {
-    fetch("http://localhost:9000/books")
-      .then((res) => res.json())
-      .then(setBooks);
-  }, []);
+  if (isLoading) {
+    content = <p className="m-2 text-center">Loading...</p>;
+  } else if (!isLoading && isError) {
+    if ("message" in error) {
+      content = (
+        <div className="m-2 text-center">
+          <Error message={error?.message} />
+        </div>
+      );
+    } else {
+      console.log("An error occurred, but no error message is available.");
+    }
+  } else if (!isLoading && !isError && books?.length === 0) {
+    content = <li className="m-2 text-center">No books found!</li>;
+  } else if (!isLoading && !isError && books?.length > 0) {
+    const data: IBooks[] = books.map((book: IBooks, i: number) => ({
+      id: parseInt(`${book.id}`),
+      avatar: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${i}`,
+      title: `${book.title}`,
+      author: `${book.author}`,
+      genre: `${book.genre}`,
+      publication_date: `${book.publication_date}`,
+      description: `${book.description}`,
+      image: `${book.image}`,
+    }));
 
-  const data: IBooks[] = books.map((book: IBooks, i) => ({
-    id: parseInt(`${book.id}`),
-    avatar: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${i}`,
-    title: `${book.title}`,
-    author: `${book.author}`,
-    genre: `${book.genre}`,
-    publication_date: `${book.publication_date}`,
-    description: `${book.description}`,
-    image: `${book.image}`,
-  }));
+    content = <BestBooks data={data} />;
+  }
 
   return (
     <div className="">
       <h2 className="text-3xl uppercase font-mono text-slate-700/90">Top 10 recent books</h2>
-      
-      <Button type="default" onClick={()=> dispatch(increment())}>
-        <span>Count in :: {count}</span>
-      </Button>
 
       <div className="my-6">
-        <BestBooks data={data} />
+        {content}
       </div>
     </div>
   );

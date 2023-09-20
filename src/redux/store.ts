@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import booksReducer from "./features/books/booksSlice";
+import { apiSlice } from "./api/apiSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: booksReducer,
+    books: booksReducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
 export type AppDispatch = typeof store.dispatch;
