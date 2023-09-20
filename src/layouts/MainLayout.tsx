@@ -1,7 +1,8 @@
 import { Layout, theme } from "antd";
 import Navbar from "./Navbar";
 import { Outlet } from "react-router-dom";
-import { Content, Footer } from "antd/es/layout/layout";
+import { Content } from "antd/es/layout/layout";
+import AppFooter from "./AppFooter";
 
 const MainLayout = () => {
   const {
@@ -19,7 +20,7 @@ const MainLayout = () => {
           </div>
         </Content>
 
-        <Footer style={{ textAlign: "center" }}>RS-Book_Catalog ©2023 Created by Ant UED</Footer>
+        <AppFooter />
       </Layout>
     </>
   );
