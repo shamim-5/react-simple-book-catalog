@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
           </div>
           <div>
             <h2 className="text-2xl text-[#253858] font-mono  ml-2">
-              <Link to={"/"}>RS-Book_Catalog</Link>
+              <Link to={"/"}>RS_Book-Catalog</Link>
             </h2>
           </div>
         </div>
