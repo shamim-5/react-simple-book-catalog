@@ -1,79 +1,72 @@
+import { useFormik } from "formik";
 import "../Login.css";
-import { useState, useEffect } from "react";
+import { loginSchema } from "@/schemas";
+import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [isActive, setIsActive] = useState(true);
+interface ILoginProps {
+  isActive: boolean;
+}
 
-  useEffect(() => {
-    const switchers = [...document.querySelectorAll(".switcher")];
+const Login: React.FC<ILoginProps> = ({ isActive }) => {
+  const initialValues = {
+    email: "",
+    password: "",
+  };
 
-    switchers.forEach((item) => {
-      item.addEventListener("click", () => {
-        switchers.forEach((switcher) => switcher.parentElement?.classList.remove("is-active"));
-        (item.parentElement as HTMLElement).classList.add("is-active");
-      });
-    });
-
-    setIsActive(!isActive);
-    console.log(isActive);
-  }, []);
+  const { values, handleBlur, handleChange, handleSubmit, errors, touched } = useFormik({
+    initialValues,
+    validationSchema: loginSchema,
+    validateOnChange: true,
+    validateOnBlur: false,
+    //// By disabling validation onChange and onBlur formik will validate on submit.
+    onSubmit: (values, action) => {
+      console.log("🚀 ~ file: App.jsx ~ line 17 ~ App ~ values", values);
+      //// to get rid of all the values after submitting the form
+      action.resetForm();
+    },
+  });
 
   return (
-    <div className="bg-[#253858]">
-      <section className="forms-section">
-        <h1 className="section-title">Authentication Forms</h1>
-        <div className="forms">
-          <div className="form-wrapper is-active">
-            <button type="button" className="switcher switcher-login">
-              Login
-              <span className="underline"></span>
-            </button>
-            <form className="form form-login">
-              <fieldset>
-                <legend>Please, enter your email and password for login.</legend>
-                <div className="input-block">
-                  <label htmlFor="login-email">E-mail</label>
-                  <input id="login-email" type="email" required />
-                </div>
-                <div className="input-block">
-                  <label htmlFor="login-password">Password</label>
-                  <input id="login-password" type="password" required />
-                </div>
-              </fieldset>
-              <button type="submit" className="btn-login">
-                Login
-              </button>
-            </form>
+    <div className={`form-wrapper ${isActive ? "is-active" : ""}`}>
+      <button type="button" className="switcher switcher-login">
+        <Link to={"/login"}>Login</Link>
+        <span className="underline"></span>
+      </button>
+      <form onSubmit={handleSubmit} className="form form-login">
+        <>
+          <div className="input-block">
+            <label htmlFor="email">E-mail</label>
+            <input
+              type="email"
+              autoComplete="off"
+              name="email"
+              id="email"
+              placeholder="Email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {errors.email && touched.email ? <p className="form-error">{errors.email}</p> : null}
           </div>
-
-          <div className="form-wrapper">
-            <button type="button" className="switcher switcher-signup">
-              Sign Up
-              <span className="underline"></span>
-            </button>
-            <form className="form form-signup">
-              <fieldset>
-                <legend>Please, enter your email, password and password confirmation for sign up.</legend>
-                <div className="input-block">
-                  <label htmlFor="signup-email">E-mail</label>
-                  <input id="signup-email" type="email" required />
-                </div>
-                <div className="input-block">
-                  <label htmlFor="signup-password">Password</label>
-                  <input id="signup-password" type="password" required />
-                </div>
-                <div className="input-block">
-                  <label htmlFor="signup-password-confirm">Confirm password</label>
-                  <input id="signup-password-confirm" type="password" required />
-                </div>
-              </fieldset>
-              <button type="submit" className="btn-signup">
-                Continue
-              </button>
-            </form>
+          <div className="input-block">
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              autoComplete="off"
+              name="password"
+              id="password"
+              placeholder="Password"
+              value={values.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+            {errors.password && touched.password ? <p className="form-error">{errors.password}</p> : null}
           </div>
-        </div>
-      </section>
+        </>
+        <button type="submit" className="btn-login">
+          Login
+        </button>
+      </form>
     </div>
   );
 };

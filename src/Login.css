@@ -10,6 +10,10 @@ body {
   background: #3b4465;
 }
 
+.form-error{
+	color: #6e0404c2;
+}
+
 .forms-section {
   display: flex;
   flex-direction: column;

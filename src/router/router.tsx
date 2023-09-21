@@ -3,9 +3,8 @@ import App from "@/App";
 import Home from "@/pages/Home";
 import AllBooks from "@/pages/AllBooks";
 import BookDetails from "@/pages/BookDetails";
-import Login from "@/pages/Login";
-import Signup from "@/pages/Signup";
 import NotFound from "@/pages/NotFound";
+import Authentication from "@/pages/Authentication";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <Authentication />,
       },
       {
-        path: "signup",
-        element: <Signup />,
+        path: "/signup",
+        element: <Authentication />,
       },
     ],
   },
