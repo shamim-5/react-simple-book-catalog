@@ -2,6 +2,8 @@ import { useFormik } from "formik";
 import "../Login.css";
 import { signupSchema } from "@/schemas";
 import { Link } from "react-router-dom";
+import { auth } from "@/lib/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 interface ISignupProps {
   isActive: boolean;
@@ -19,8 +21,17 @@ const Signup: React.FC<ISignupProps> = ({ isActive }) => {
     validateOnBlur: false,
     //// By disabling validation onChange and onBlur formik will validate on submit.
     onSubmit: (values, action) => {
-      console.log("🚀 ~ file: App.jsx ~ line 17 ~ App ~ values", values);
-      //// to get rid of all the values after submitting the form
+      // firebase authentication for signup
+      const { email, password } = values;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
       action.resetForm();
     },
   });

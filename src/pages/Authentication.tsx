@@ -23,8 +23,8 @@ const Authentication = () => {
     setPath(location.pathname.replace(/^.*[/]/, ""));
   }, [location.pathname]);
 
-  console.log(path);
-  console.log(isActive);
+  console.log(path, isActive);
+//   console.log(meta.env.REACT_APP_API_URL);
 
   return (
     <div className="bg-[#253858]">
