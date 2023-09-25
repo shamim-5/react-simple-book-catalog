@@ -1,11 +1,17 @@
-import { Dropdown, Layout, Menu, Space } from "antd";
+import { Button, Dropdown, Layout, Menu, Space } from "antd";
 import { MenuFoldOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useAppDispatch } from "@/redux/hooks/hook";
+import { signOut } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import { userLoggedOut } from "@/redux/features/auth/authSlice";
+import useAuth from "@/redux/hooks/useAuth";
 
 const { Header } = Layout;
 
 const Navbar: React.FC = () => {
+  const isLoggedIn = useAuth();
   const location = useLocation();
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
@@ -13,12 +19,39 @@ const Navbar: React.FC = () => {
     setSelectedKeys([location.pathname.replace(/^.*[/]/, "")]);
   }, [location]);
 
-  const items = [
-    { label: <Link to="/">Home</Link>, name: "Home", key: "0", path: `/` },
-    { label: <Link to="/all-books">All-Books</Link>, name: "All-Books", key: "1", path: `/all-books` },
-    { label: <Link to="/login">Login</Link>, name: "Login", key: "2", path: `/login` },
-    { label: <Link to="/signup">Signup</Link>, name: "Signup", key: "3", path: `/signup` },
-  ];
+  const dispatch = useAppDispatch();
+
+  const handleSignOut = () => {
+    signOut(auth);
+
+    try {
+      localStorage.clear();
+      dispatch(userLoggedOut());
+    } catch (err) {
+      // do nothing
+    }
+  };
+
+  const items = isLoggedIn
+    ? [
+        { label: <Link to="/">Home</Link>, name: "Home", key: "0", path: `/` },
+        { label: <Link to="/all-books">All-Books</Link>, name: "All-Books", key: "1", path: `/all-books` },
+        {
+          label: (
+            <Button onClick={() => handleSignOut()} className="text-[#253858] border-0 mx-0 px-0">
+              Logout
+            </Button>
+          ),
+          name: "Logout",
+          key: "2",
+        },
+      ]
+    : [
+        { label: <Link to="/">Home</Link>, name: "Home", key: "0", path: `/` },
+        { label: <Link to="/all-books">All-Books</Link>, name: "All-Books", key: "1", path: `/all-books` },
+        { label: <Link to="/login">Login</Link>, name: "Login", key: "2", path: `/login` },
+        { label: <Link to="/signup">Signup</Link>, name: "Signup", key: "3", path: `/signup` },
+      ];
 
   return (
     <>
@@ -44,14 +77,22 @@ const Navbar: React.FC = () => {
               mode="horizontal"
               selectedKeys={selectedKeys}
               items={items.map((m) => {
-                const key = m.path.replace(/^.*[/]/, "");
+                const key = m.key;
+                // const key = m.path.replace(/^.*[/]/, "");
 
                 return {
                   key,
-                  label: (
+                  label: m.path ? (
                     <Link className={`${selectedKeys[0] === m.path} && text-red-900`} to={m.path}>
                       {m.name}
                     </Link>
+                  ) : (
+                    <Button
+                      onClick={() => handleSignOut()}
+                      className={`${selectedKeys[0] === m.path} && text-[#253858] border-0 mx-0 px-0`}
+                    >
+                      {m.name}
+                    </Button>
                   ),
                 };
               })}

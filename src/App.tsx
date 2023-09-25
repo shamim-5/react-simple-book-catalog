@@ -1,7 +1,12 @@
 import MainLayout from "./layouts/MainLayout";
+import useAuthCheck from "./redux/hooks/useAuthCheck";
 
 function App() {
-  return (
+  const authCheck = useAuthCheck();
+
+  return !authCheck ? (
+    <div>Checking Authentication...</div>
+  ) : (
     <>
       <MainLayout />
     </>

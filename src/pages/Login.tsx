@@ -1,37 +1,41 @@
 import { useFormik } from "formik";
 import "../Login.css";
 import { loginSchema } from "@/schemas";
-import { Link } from "react-router-dom";
-import { auth } from "@/lib/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { useEffect } from "react";
+import useAuth from "@/redux/hooks/useAuth";
 
 interface ILoginProps {
   isActive: boolean;
 }
 
 const Login: React.FC<ILoginProps> = ({ isActive }) => {
+  const isLoggedIn = useAuth();
+  const [login, { isLoading }] = useLoginMutation();
+  const navigate = useNavigate();
+  // console.log({ res });
   const initialValues = {
     email: "",
     password: "",
   };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn, navigate]);
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } = useFormik({
     initialValues,
     validationSchema: loginSchema,
     validateOnChange: true,
     validateOnBlur: false,
-    //// By disabling validation onChange and onBlur formik will validate on submit.
+
     onSubmit: (values, action) => {
-      // firebase authentication for login
       const { email, password } = values;
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      login({ email, password });
+
       action.resetForm();
     },
   });
@@ -73,7 +77,7 @@ const Login: React.FC<ILoginProps> = ({ isActive }) => {
             {errors.password && touched.password ? <p className="form-error">{errors.password}</p> : null}
           </div>
         </>
-        <button type="submit" className="btn-login">
+        <button type="submit" disabled={isLoading} className="btn-login">
           Login
         </button>
       </form>

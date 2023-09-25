@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import booksReducer from "./features/books/booksSlice";
+import booksSliceReducer from "./features/books/booksSlice";
 import { apiSlice } from "./api/apiSlice";
+import authSliceReducer from "./features/auth/authSlice";
 
 export const store = configureStore({
   reducer: {
-    books: booksReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
+    auth: authSliceReducer,
+    books: booksSliceReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),

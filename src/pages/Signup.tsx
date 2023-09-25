@@ -1,14 +1,26 @@
 import { useFormik } from "formik";
 import "../Login.css";
 import { signupSchema } from "@/schemas";
-import { Link } from "react-router-dom";
-import { auth } from "@/lib/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { useRegisterMutation } from "@/redux/features/auth/authApi";
+import { useAppSelector } from "@/redux/hooks/hook";
+import { useEffect } from "react";
 
 interface ISignupProps {
   isActive: boolean;
 }
 const Signup: React.FC<ISignupProps> = ({ isActive }) => {
+  const auth = useAppSelector((state) => state?.auth);
+  const [register, { isLoading }] = useRegisterMutation();
+  const navigate = useNavigate();
+  // console.log({ res });
+
+  useEffect(() => {
+    if (auth?.accessToken && auth?.user) {
+      navigate("/");
+    }
+  }, [auth?.accessToken, auth?.user, navigate]);
+
   const initialValues = {
     email: "",
     password: "",
@@ -19,18 +31,9 @@ const Signup: React.FC<ISignupProps> = ({ isActive }) => {
     validationSchema: signupSchema,
     validateOnChange: true,
     validateOnBlur: false,
-    //// By disabling validation onChange and onBlur formik will validate on submit.
     onSubmit: (values, action) => {
-      // firebase authentication for signup
       const { email, password } = values;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log(user);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      register({ email, password });
 
       action.resetForm();
     },
@@ -89,7 +92,7 @@ const Signup: React.FC<ISignupProps> = ({ isActive }) => {
             ) : null}
           </div>
         </>
-        <button type="submit" className="btn-signup">
+        <button type="submit" disabled={isLoading} className="btn-signup">
           Continue
         </button>
       </form>
