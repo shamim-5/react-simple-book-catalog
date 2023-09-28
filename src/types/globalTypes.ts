@@ -6,11 +6,11 @@ export interface IReviews {
 }
 
 export interface IBooks {
-  id: number;
+  id?: number;
   title: string;
   author: string;
-  genre?: string;
-  publication_date?: string;
+  genre: string;
+  publication_date: string;
   description?: string;
   image?: string;
   reviews?: IReviews[];

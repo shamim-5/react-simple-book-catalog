@@ -34,7 +34,7 @@ const BookDetails = () => {
       title: `${book.title}`,
       author: `${book.author}`,
       genre: `${book.genre}`,
-      publication_date: `${book.publication_date}`,
+      publication_date: `${book.publication_date.split("T")[0]}`,
       description: `${book.description}`,
       image: `${book.image}`,
     }));
@@ -45,9 +45,7 @@ const BookDetails = () => {
     <div>
       <h2 className="text-3xl uppercase font-mono text-slate-700/90">Book Details</h2>
 
-      <div className="my-6">
-        {content}
-      </div>
+      <div className="my-6">{content}</div>
     </div>
   );
 };

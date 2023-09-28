@@ -30,7 +30,7 @@ const Home = () => {
       title: `${book.title}`,
       author: `${book.author}`,
       genre: `${book.genre}`,
-      publication_date: `${book.publication_date}`,
+      publication_date: `${book.publication_date.split("T")[0]}`,
       description: `${book.description}`,
       image: `${book.image}`,
     }));

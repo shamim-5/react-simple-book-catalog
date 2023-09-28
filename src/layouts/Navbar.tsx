@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { userLoggedOut } from "@/redux/features/auth/authSlice";
 import useAuth from "@/redux/hooks/useAuth";
+import SearchAntd from "@/components/ui/SearchAntd";
 
 const { Header } = Layout;
 
@@ -32,26 +33,30 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const items = isLoggedIn
-    ? [
-        { label: <Link to="/">Home</Link>, name: "Home", key: "0", path: `/` },
-        { label: <Link to="/all-books">All-Books</Link>, name: "All-Books", key: "1", path: `/all-books` },
-        {
-          label: (
-            <Button onClick={() => handleSignOut()} className="text-[#253858] border-0 mx-0 px-0">
-              Logout
-            </Button>
-          ),
-          name: "Logout",
-          key: "2",
-        },
-      ]
-    : [
-        { label: <Link to="/">Home</Link>, name: "Home", key: "0", path: `/` },
-        { label: <Link to="/all-books">All-Books</Link>, name: "All-Books", key: "1", path: `/all-books` },
-        { label: <Link to="/login">Login</Link>, name: "Login", key: "2", path: `/login` },
-        { label: <Link to="/signup">Signup</Link>, name: "Signup", key: "3", path: `/signup` },
-      ];
+  const items = [
+    { label: <Link to="/">Home</Link>, name: "Home", key: "0", path: `/` },
+    { label: <Link to="/all-books">All-Books</Link>, name: "All-Books", key: "1", path: `/all-books` },
+    { label: <Link to="/add-new-book">Add-New-Book</Link>, name: "add-new-book", key: "4", path: `/add-new-book` },
+
+    {
+      label: isLoggedIn ? (
+        <Button onClick={() => handleSignOut()} className="text-[#253858] border-0 mx-0 px-0">
+          Logout
+        </Button>
+      ) : (
+        <Link to="/login">Login</Link>
+      ),
+      name: isLoggedIn ? "Logout" : "Login",
+      key: "2",
+      path: isLoggedIn ? "" : `/login`,
+    },
+    {
+      label: !isLoggedIn && <Link to="/signup">Signup</Link>,
+      name: !isLoggedIn && "Signup",
+      key: "3",
+      path: !isLoggedIn && `/signup`,
+    },
+  ];
 
   return (
     <>
@@ -63,15 +68,16 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
           <div>
-            <h2 className="text-2xl text-[#253858] font-mono  ml-2">
+            <h2 className="text-xl lg:text-2xl text-[#253858] font-mono  ml-2">
               <Link to={"/"}>RS_Book-Catalog</Link>
             </h2>
           </div>
         </div>
 
-        <div>
-          <div className="hidden lg:flex">
+        <div className="flex items-center justify-start">
+          <div className="hidden lg:block">
             <Menu
+              style={{ whiteSpace: "nowrap", minWidth: "500px" }}
               className="text-[#253858] font-mono border-0"
               theme="light"
               mode="horizontal"
@@ -83,7 +89,7 @@ const Navbar: React.FC = () => {
                 return {
                   key,
                   label: m.path ? (
-                    <Link className={`${selectedKeys[0] === m.path} && text-red-900`} to={m.path}>
+                    <Link className={`${selectedKeys[0] === m.path} && text-[#253858]`} to={m.path}>
                       {m.name}
                     </Link>
                   ) : (
@@ -98,8 +104,10 @@ const Navbar: React.FC = () => {
               })}
             />
           </div>
-
-          <div className="flex lg:hidden">
+          <div className="mt-9 mr-2">
+            <SearchAntd />
+          </div>
+          <div className="block lg:hidden">
             <Dropdown
               menu={{
                 items,

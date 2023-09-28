@@ -19,6 +19,7 @@ const BestBooks: React.FC<BestBooksProps> = ({ data }) => {
   return (
     <div>
       <List
+        className=""
         itemLayout="vertical"
         size="large"
         pagination={{
@@ -30,6 +31,7 @@ const BestBooks: React.FC<BestBooksProps> = ({ data }) => {
         dataSource={data}
         renderItem={(item) => (
           <List.Item
+            className="flex flex-col-reverse lg:flex-row"
             key={item.title}
             actions={[
               <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
