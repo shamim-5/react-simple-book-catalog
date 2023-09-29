@@ -1,19 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface IInitialState{
-   searchTerm: string | undefined;
+interface IInitialState {
+  field?: string | undefined;
+  searchTerm: string | undefined;
 }
 
 const initialState: IInitialState = {
-   searchTerm: undefined,
-}
+  field: "",
+  searchTerm: "",
+};
 
 const helperSlice = createSlice({
   name: "helper",
   initialState,
   reducers: {
     setSearchTerm: (state, action) => {
-      state.searchTerm= action.payload.searchTerm;
+      state.field = action.payload.field;
+      state.searchTerm = action.payload.searchTerm;
     },
   },
 });

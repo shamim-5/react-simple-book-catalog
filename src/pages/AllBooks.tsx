@@ -6,15 +6,13 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
 import { useEffect } from "react";
 
 const AllBooks = () => {
-  const { searchTerm } = useAppSelector((state) => state.helper);
+  const { field, searchTerm } = useAppSelector((state) => state.helper) || {};
 
-  const { data: books, isLoading, isError, error } = useGetBooksQuery(searchTerm);
+  const { data: books, isLoading, isError, error } = useGetBooksQuery({ field, searchTerm });
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (searchTerm) {
-      dispatch(booksApi.endpoints.getBooks.initiate(searchTerm));
-    }
+    dispatch(booksApi.endpoints.getBooks.initiate(searchTerm));
   }, [searchTerm, dispatch]);
 
   // decide what to render

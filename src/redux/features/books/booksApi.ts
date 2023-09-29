@@ -1,23 +1,23 @@
 import { apiSlice } from "@/redux/api/apiSlice";
-import { setSearchTerm } from "../helper/helperSlice";
+// import { setSearchTerm } from "../helper/helperSlice";
 
 export const booksApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getBooks: builder.query({
-      query: (searchTerm) => (searchTerm ? `/books?genre_like=${searchTerm}` : `/books`),
+      query: ({ field, searchTerm }) => (searchTerm && field ? `/books?${field}_like=${searchTerm}` : `/books`),
       // keepUnusedDataFor: 600,
-      async onQueryStarted(searchTerm, { queryFulfilled, dispatch }) {
-        const result = await queryFulfilled;
+      // async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+      //   const result = await queryFulfilled;
 
-        try {
-          if (result) {
-            // console.log(searchTerm, result);
-            dispatch(setSearchTerm({ searchTerm }));
-          }
-        } catch (err) {
-          // do nothing
-        }
-      },
+      //   try {
+      //     if (result) {
+      //       console.log(arg, result);
+      //       dispatch(setSearchTerm({ field: arg.field, searchTerm: arg.searchTerm }));
+      //     }
+      //   } catch (err) {
+      //     // do nothing
+      //   }
+      // },
       providesTags: ["Books"],
     }),
     getBooksById: builder.query({

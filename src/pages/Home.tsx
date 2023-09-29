@@ -2,9 +2,11 @@ import BestBooks from "../components/BestBooks";
 import { IBooks } from "@/types/globalTypes";
 import { useGetBooksQuery } from "@/redux/features/books/booksApi";
 import Error from "@/components/ui/Error";
+import { useAppSelector } from "@/redux/hooks/hook";
 
 const Home = () => {
-  const { data: books, isLoading, isError, error } = useGetBooksQuery(undefined);
+  const {field, searchTerm } = useAppSelector((state) => state.helper) || {};
+  const { data: books, isLoading, isError, error } = useGetBooksQuery({ field, searchTerm });
 
   // decide what to render
   let content = null;
@@ -42,9 +44,7 @@ const Home = () => {
     <div className="">
       <h2 className="text-3xl uppercase font-mono text-slate-700/90">Top 10 recent books</h2>
 
-      <div className="my-6">
-        {content}
-      </div>
+      <div className="my-6">{content}</div>
     </div>
   );
 };
