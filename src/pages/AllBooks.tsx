@@ -1,10 +1,21 @@
 import { IBooks } from "@/types/globalTypes";
-import { useGetBooksQuery } from "@/redux/features/books/booksApi";
+import { booksApi, useGetBooksQuery } from "@/redux/features/books/booksApi";
 import Error from "@/components/ui/Error";
 import { Avatar, List } from "antd";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks/hook";
+import { useEffect } from "react";
 
 const AllBooks = () => {
-  const { data: books, isLoading, isError, error } = useGetBooksQuery(undefined);
+  const { searchTerm } = useAppSelector((state) => state.helper);
+
+  const { data: books, isLoading, isError, error } = useGetBooksQuery(searchTerm);
+
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    if (searchTerm) {
+      dispatch(booksApi.endpoints.getBooks.initiate(searchTerm));
+    }
+  }, [searchTerm, dispatch]);
 
   // decide what to render
   let content = null;
