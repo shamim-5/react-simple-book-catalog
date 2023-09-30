@@ -31,7 +31,22 @@ export const booksApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ["Books"],
     }),
+    editBook: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/books/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+      invalidatesTags: ["Books"],
+    }),
+    deleteBook: builder.mutation({
+      query: (id) => ({
+        url: `/books/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Books"],
+    }),
   }),
 });
 
-export const { useGetBooksQuery, useGetBooksByIdQuery, useAddNewBookMutation } = booksApi;
+export const { useGetBooksQuery, useGetBooksByIdQuery, useAddNewBookMutation, useDeleteBookMutation, useEditBookMutation } = booksApi;

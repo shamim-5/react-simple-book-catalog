@@ -7,6 +7,7 @@ import NotFound from "@/pages/NotFound";
 import Authentication from "@/pages/Authentication";
 import AddNewBook from "@/pages/AddNewBook";
 import PrivateRoute from "@/components/PrivateRoute";
+import EditBook from "@/pages/EditBook";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <AddNewBook />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/edit-book/:id",
+        element: (
+          <PrivateRoute>
+            <EditBook />
           </PrivateRoute>
         ),
       },

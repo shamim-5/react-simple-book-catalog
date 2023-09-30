@@ -13,7 +13,7 @@ export interface IBooks {
   publication_date: string;
   description?: string;
   image?: string;
-  reviews?: IReviews[];
+  reviews?: IReviews[] | { averageRating: number; numberOfReviews: number };
 
   avatar?: string;
 }

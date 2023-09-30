@@ -1,6 +1,5 @@
 import { IBooks } from "@/types/globalTypes";
-import { LikeOutlined, MessageOutlined, StarOutlined } from "@ant-design/icons";
-import { Avatar, List, Space } from "antd";
+import { Avatar, List } from "antd";
 import React from "react";
 
 interface BestBooksProps {
@@ -8,13 +7,6 @@ interface BestBooksProps {
 }
 
 const BestBooks: React.FC<BestBooksProps> = ({ data }) => {
-  const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
-    <Space>
-      {React.createElement(icon)}
-      {text}
-    </Space>
-  );
-
   return (
     <div>
       <List
@@ -32,11 +24,6 @@ const BestBooks: React.FC<BestBooksProps> = ({ data }) => {
           <List.Item
             className="flex flex-col-reverse lg:flex-row"
             key={item.title}
-            actions={[
-              <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
-              <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
-              <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
-            ]}
             extra={<img width={272} alt="logo" src={`${item.image}`} />}
           >
             <List.Item.Meta
