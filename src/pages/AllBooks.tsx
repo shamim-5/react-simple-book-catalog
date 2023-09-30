@@ -1,4 +1,4 @@
-import { IBooks } from "@/types/globalTypes";
+import { IBooks, IErrorResponse } from "@/types/globalTypes";
 import { booksApi, useGetBooksQuery } from "@/redux/features/books/booksApi";
 import Error from "@/components/ui/Error";
 import { Avatar, List } from "antd";
@@ -28,7 +28,8 @@ const AllBooks = () => {
         </div>
       );
     } else {
-      console.log("An error occurred, but no error message is available.");
+      const errorResponse = error as IErrorResponse;
+      console.log(errorResponse?.error);
     }
   } else if (!isLoading && !isError && books?.length === 0) {
     content = <li className="m-2 text-center">No books found!</li>;

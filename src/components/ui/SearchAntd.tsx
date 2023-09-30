@@ -51,11 +51,11 @@ const SearchAntd: React.FC = () => {
           <Select.Option value="Gothic">Gothic</Select.Option>
         </Select>
       </div>
-      <div className="mb-8 mr-1">
+      <div className="mb-8 mr-1 max-w-[110px]">
         <DatePicker onChange={handleDateChange} picker="year" className="" />
       </div>
       <div>
-        <Space direction="vertical">
+        <Space direction="vertical" className="max-w-[200px]">
           <Search placeholder="Search by title" allowClear onChange={onSearch} />
         </Space>
       </div>

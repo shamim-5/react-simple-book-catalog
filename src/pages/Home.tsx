@@ -1,11 +1,11 @@
 import BestBooks from "../components/BestBooks";
-import { IBooks } from "@/types/globalTypes";
+import { IBooks, IErrorResponse } from "@/types/globalTypes";
 import { useGetBooksQuery } from "@/redux/features/books/booksApi";
 import Error from "@/components/ui/Error";
 import { useAppSelector } from "@/redux/hooks/hook";
 
 const Home = () => {
-  const {field, searchTerm } = useAppSelector((state) => state.helper) || {};
+  const { field, searchTerm } = useAppSelector((state) => state.helper) || {};
   const { data: books, isLoading, isError, error } = useGetBooksQuery({ field, searchTerm });
 
   // decide what to render
@@ -21,7 +21,8 @@ const Home = () => {
         </div>
       );
     } else {
-      console.log("An error occurred, but no error message is available.");
+      const errorResponse = error as IErrorResponse;
+      console.log(errorResponse?.error);
     }
   } else if (!isLoading && !isError && books?.length === 0) {
     content = <li className="m-2 text-center">No books found!</li>;

@@ -17,3 +17,9 @@ export interface IBooks {
 
   avatar?: string;
 }
+
+export interface IErrorResponse {
+  message?: unknown;
+  status?: number;
+  error?: string;
+}

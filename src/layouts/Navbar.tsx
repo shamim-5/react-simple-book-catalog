@@ -77,7 +77,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-start">
           <div className="hidden lg:block">
             <Menu
-              style={{ whiteSpace: "nowrap", minWidth: "500px" }}
+              style={{ whiteSpace: "nowrap", minWidth: "450px" }}
               className="text-[#253858] font-mono border-0"
               theme="light"
               mode="horizontal"

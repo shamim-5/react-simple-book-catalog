@@ -1,12 +1,23 @@
-import { IBooks } from "@/types/globalTypes";
-import BestBooks from "@/components/BestBooks";
+import React from "react";
+import { IBooks, IErrorResponse } from "@/types/globalTypes";
+import { LikeOutlined, MessageOutlined, StarOutlined } from "@ant-design/icons";
+import { Avatar, List, Space } from "antd";
 import { useParams } from "react-router-dom";
 import Error from "@/components/ui/Error";
 import { useGetBooksQuery } from "@/redux/features/books/booksApi";
+import { useAppSelector } from "@/redux/hooks/hook";
 
 const BookDetails = () => {
-  const { data: books, isLoading, isError, error } = useGetBooksQuery(undefined);
+  const { field, searchTerm } = useAppSelector((state) => state.helper) || {};
+  const { data: books, isLoading, isError, error } = useGetBooksQuery({ field, searchTerm });
+
   const params = useParams();
+  const IconText = ({ icon, text }: { icon: React.FC; text: string }) => (
+    <Space>
+      {React.createElement(icon)}
+      {text}
+    </Space>
+  );
 
   // decide what to render
   let content = null;
@@ -21,7 +32,8 @@ const BookDetails = () => {
         </div>
       );
     } else {
-      console.log("An error occurred, but no error message is available.");
+      const errorResponse = error as IErrorResponse;
+      console.log(errorResponse?.error);
     }
   } else if (!isLoading && !isError && books?.length === 0) {
     content = <li className="m-2 text-center">No books found!</li>;
@@ -39,7 +51,48 @@ const BookDetails = () => {
       image: `${book.image}`,
     }));
 
-    content = <BestBooks data={data} />;
+    content = (
+      <div>
+        <List
+          className=""
+          itemLayout="vertical"
+          size="large"
+          dataSource={data}
+          renderItem={(item) => (
+            <List.Item
+              className="flex flex-col-reverse lg:flex-row"
+              key={item.title}
+              actions={[
+                <IconText icon={StarOutlined} text="156" key="list-vertical-star-o" />,
+                <IconText icon={LikeOutlined} text="156" key="list-vertical-like-o" />,
+                <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
+              ]}
+              extra={<img width={272} alt="logo" src={`${item.image}`} />}
+            >
+              <List.Item.Meta
+                avatar={<Avatar src={item.avatar} />}
+                title={<a href={``}>{item.title}</a>}
+                description={
+                  <div>
+                    <h3>
+                      Author: <span>{item.author}</span>
+                    </h3>
+                    <p>
+                      Genre: <span>{item.genre}</span>
+                    </p>
+                    <p>
+                      Publication Date: <span>{item.publication_date}</span>
+                    </p>
+                  </div>
+                }
+              />
+
+              {item.description}
+            </List.Item>
+          )}
+        />
+      </div>
+    );
   }
   return (
     <div>
