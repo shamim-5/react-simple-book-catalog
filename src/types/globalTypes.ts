@@ -1,12 +1,12 @@
 export interface IReviews {
-  id: number;
+  id: number | string;
   user: string;
   rating: number;
   comment: string;
 }
 
 export interface IBooks {
-  id?: number;
+  id?: number | string;
   title: string;
   author: string;
   genre: string;

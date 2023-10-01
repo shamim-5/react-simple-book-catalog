@@ -1,19 +1,25 @@
 import React from "react";
 import { IBooks, IErrorResponse, IReviews } from "@/types/globalTypes";
 import { MessageOutlined, StarOutlined } from "@ant-design/icons";
-import { Avatar, Button, List, Space } from "antd";
+import { Avatar, Button, Form, InputNumber, List, Space } from "antd";
 import { useParams } from "react-router-dom";
 import Error from "@/components/ui/Error";
-import { useGetBooksQuery } from "@/redux/features/books/booksApi";
+import { useEditBookMutation, useGetBooksByIdQuery, useGetBooksQuery } from "@/redux/features/books/booksApi";
 import { useAppSelector } from "@/redux/hooks/hook";
 import Comments from "@/components/Comments";
 import ModalAntd from "@/components/ui/ModalAntd";
+import TextArea from "antd/es/input/TextArea";
+import { v4 as uuidv4 } from "uuid";
 
 const BookDetails = () => {
+  const params = useParams();
   const { field, searchTerm } = useAppSelector((state) => state.helper) || {};
   const { data: books, isLoading, isError, error } = useGetBooksQuery({ field, searchTerm });
+  const [editBook, { isSuccess: isEditBookSuccess, isLoading: isEditBookLoading, isError: isEditBookError }] =
+    useEditBookMutation();
+  const { data: bookData, isLoading: isDataLoading } = useGetBooksByIdQuery(params.id);
+  const auth = useAppSelector((state) => state.auth);
 
-  const params = useParams();
   const IconText = ({ icon, text }: { icon: React.FC; text: string | number }) => (
     <Space>
       {React.createElement(icon)}
@@ -23,7 +29,7 @@ const BookDetails = () => {
 
   const calculateAverageRatingAndCount = (reviews: IReviews[]): { averageRating: number; numberOfReviews: number } => {
     const totalRatings = reviews.reduce((sum, review) => sum + review.rating, 0);
-    const averageRating = totalRatings / reviews.length;
+    const averageRating = Math.ceil(totalRatings / reviews.length);
     const numberOfReviews = reviews.length;
 
     return {
@@ -64,6 +70,27 @@ const BookDetails = () => {
       image: `${book.image}`,
       reviews: calculateAverageRatingAndCount((book?.reviews as IReviews[]) || []),
     }));
+
+    // add new review to reviews array
+    const onFinish = (values: IReviews) => {
+      const newReview = {
+        id: uuidv4(),
+        user: auth?.user,
+        rating: values.rating,
+        comment: values?.comment || "",
+      };
+
+      const updatedReviews = [...bookData.reviews, newReview];
+      const updatedData = {
+        ...bookData,
+        reviews: updatedReviews,
+      };
+
+      editBook({ id: params.id, data: updatedData });
+
+      console.log(values, params.id);
+      console.log(isEditBookError, isEditBookLoading, isEditBookSuccess);
+    };
 
     content = (
       <div>
@@ -128,7 +155,38 @@ const BookDetails = () => {
 
                 {item.description}
               </List.Item>
-              <Space className="text-lg font-mono">Comments :</Space>
+              {isDataLoading ? (
+                <div>Loading...</div>
+              ) : (
+                <>
+                  <Form
+                    onFinish={onFinish}
+                    labelCol={{ span: 4 }}
+                    wrapperCol={{ span: 18 }}
+                    className="border shadow-sm p-4 mb-4"
+                  >
+                    <Form.Item label="Rating" name="rating" rules={[{ required: true }]}>
+                      <InputNumber min={1} max={5} step={0.5} />
+                    </Form.Item>
+                    <Form.Item label="Leave a comment" name="comment">
+                      <TextArea rows={2} />
+                    </Form.Item>
+                    <Form.Item label=" " colon={false}>
+                      <Button
+                        disabled={isLoading}
+                        type="primary"
+                        ghost
+                        htmlType="submit"
+                        style={{ display: "inline-block" }}
+                        className="bg-cyan-900/30 text-[#475466]"
+                      >
+                        Submit
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                </>
+              )}
+              <Space className="text-lg font-mono">Recent Comments :</Space>
               <Comments />
             </>
           )}
@@ -136,6 +194,7 @@ const BookDetails = () => {
       </div>
     );
   }
+
   return (
     <div>
       <h2 className="text-3xl uppercase font-mono text-slate-700/90">Book Details</h2>

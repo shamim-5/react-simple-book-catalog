@@ -22,6 +22,7 @@ export const booksApi = apiSlice.injectEndpoints({
     }),
     getBooksById: builder.query({
       query: (id) => `/books/${id}`,
+      providesTags: ["Books"],
     }),
     addNewBook: builder.mutation({
       query: (data) => ({
@@ -49,4 +50,10 @@ export const booksApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useGetBooksQuery, useGetBooksByIdQuery, useAddNewBookMutation, useDeleteBookMutation, useEditBookMutation } = booksApi;
+export const {
+  useGetBooksQuery,
+  useGetBooksByIdQuery,
+  useAddNewBookMutation,
+  useDeleteBookMutation,
+  useEditBookMutation,
+} = booksApi;

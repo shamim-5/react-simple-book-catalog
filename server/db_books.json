@@ -25,10 +25,10 @@
     },
     {
       "id": 2,
-      "title": "To Kill a Mockingbird",
-      "author": "Harper Lee",
+      "title": "To Kill Mockingbird",
+      "author": "Harper L",
       "genre": "Classic",
-      "publication_date": "1960-07-11",
+      "publication_date": "1960-07-09T18:00:00.000Z",
       "description": "To Kill a Mockingbird, penned by Harper Lee, is a literary classic that delves into issues of racial injustice and moral integrity in the American South. Set in the fictional town of Maycomb, Alabama, during the 1930s, the story is narrated by Scout Finch, a young girl who observes her father, Atticus Finch, defending a black man accused of raping a white woman.\n\nLee's novel masterfully explores themes of empathy, racial prejudice, and the loss of innocence. Through Scout's eyes, readers witness the complexities of society, as well as the courage of those who stand against injustice. To Kill a Mockingbird is a poignant reminder of the importance of compassion and the fight for justice, making it an enduring classic in American literature.",
       "image": "https://m.media-amazon.com/images/I/81+MJor-K6L._SL1500_.jpg",
       "reviews": [
@@ -319,6 +319,12 @@
           "user": "Claire",
           "rating": 3,
           "comment": "Journey of self-discovery."
+        },
+        {
+          "id": "c0e8c05e-5be1-47cd-9da0-f7af3188aa25",
+          "user": "test5@gmail.com",
+          "rating": 4.5,
+          "comment": "Wow so nice"
         }
       ]
     },
@@ -342,6 +348,12 @@
           "user": "Ella",
           "rating": 4,
           "comment": "Horror at its best."
+        },
+        {
+          "id": "5024076f-fb15-424e-a223-932819d0c6a9",
+          "user": "test5@gmail.com",
+          "rating": 3,
+          "comment": "fsdsdffds"
         }
       ]
     }
