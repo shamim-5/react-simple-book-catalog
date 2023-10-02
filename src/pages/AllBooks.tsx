@@ -35,7 +35,7 @@ const AllBooks = () => {
     content = <li className="m-2 text-center">No books found!</li>;
   } else if (!isLoading && !isError && books?.length > 0) {
     const data: IBooks[] = books.map((book: IBooks, i: number) => ({
-      id: parseInt(`${book.id}`),
+      id: `${book._id}`,
       avatar: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${i}`,
       title: `${book.title}`,
       author: `${book.author}`,

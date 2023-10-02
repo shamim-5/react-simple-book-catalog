@@ -10,13 +10,13 @@ import Comments from "@/components/Comments";
 import ModalAntd from "@/components/ui/ModalAntd";
 import TextArea from "antd/es/input/TextArea";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 const BookDetails = () => {
   const params = useParams();
   const { field, searchTerm } = useAppSelector((state) => state.helper) || {};
   const { data: books, isLoading, isError, error } = useGetBooksQuery({ field, searchTerm });
-  const [editBook, { isSuccess: isEditBookSuccess, isLoading: isEditBookLoading, isError: isEditBookError }] =
-    useEditBookMutation();
+  const [editBook, { isSuccess }] = useEditBookMutation();
   const { data: bookData, isLoading: isDataLoading } = useGetBooksByIdQuery(params.id);
   const auth = useAppSelector((state) => state.auth);
 
@@ -57,10 +57,10 @@ const BookDetails = () => {
   } else if (!isLoading && !isError && books?.length === 0) {
     content = <li className="m-2 text-center">No books found!</li>;
   } else if (!isLoading && !isError && books?.length > 0) {
-    const isExist = books?.filter((book: IBooks) => book?.id === parseInt(params?.id as string));
+    const isExist = books?.filter((book: IBooks) => book?._id === (params?.id as string));
 
     const data: IBooks[] = isExist?.map((book: IBooks, i: number) => ({
-      id: parseInt(`${book.id}`),
+      id: `${book._id}`,
       avatar: `https://xsgames.co/randomusers/avatar.php?g=pixel&key=${i}`,
       title: `${book.title}`,
       author: `${book.author}`,
@@ -83,13 +83,11 @@ const BookDetails = () => {
       const updatedReviews = [...bookData.reviews, newReview];
       const updatedData = {
         ...bookData,
-        reviews: updatedReviews,
+        reviews: [...updatedReviews],
       };
 
       editBook({ id: params.id, data: updatedData });
-
-      console.log(values, params.id);
-      console.log(isEditBookError, isEditBookLoading, isEditBookSuccess);
+      isSuccess && toast("Thanks fro your feedback");
     };
 
     content = (

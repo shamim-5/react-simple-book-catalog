@@ -6,7 +6,8 @@ export interface IReviews {
 }
 
 export interface IBooks {
-  id?: number | string;
+  [x: string]: unknown;
+  _id?: string;
   title: string;
   author: string;
   genre: string;
